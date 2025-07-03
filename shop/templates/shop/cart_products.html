@@ -1,0 +1,233 @@
+{% load static %}
+<section id="limlight">
+  <section class="wrapper">
+    <span class="title">
+      <img src="{% static 'images/Rectangle 21.svg' %}" alt="Rectangle">
+      <h6>In The Limelight</h6>
+    </span>
+    <div class="fasion">
+      {% if cart_items %}
+      <ul>
+        {% for item in cart_items %}
+        <li>
+          <div class="first">
+            <a href="{% url 'product_details' item.product.category.name item.product.name %}">
+              <img class="main-img" src="{{ item.product.image.url }}" alt="img-16">
+            </a>
+
+            <a href="{% url 'add_to_wishlist' item.product.id %}">
+              <span class="icon">
+                <img src="{% static 'images/wishlist.svg' %}" alt="wishlist">
+              </span>
+            </a>
+
+
+
+          </div>
+          <span class="left">
+            <h3>{{ item.product.name }}</h3>
+            <h2>
+              {% if item.product.price %}
+              <p class="price">${{ item.product.price }}</p>
+              {% else %}
+              <p>Price on request</p>
+              {% endif %}
+            </h2>
+          </span>
+          <h2>
+            {% if item.product.brand %}
+            <p class="right">{{ item.product.brand }}</p>
+            {% endif %}
+
+          </h2>
+        </li>
+        {% endfor %}
+        {% else %}
+        <p>Your cart is empty.</p>
+        {% endif %}
+      </ul>
+    </div>
+  </section> <!-- #limlight.wrapper -->
+</section> <!-- #limlight -->
+
+<style>
+  #limlight {
+    margin-top: 100px;
+  }
+
+  #limlight .title {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  #limlight .title img {
+    height: 30px;
+  }
+
+  #limlight .title h6 {
+    font-size: 32px;
+    font-weight: 600;
+  }
+
+  #limlight .fasion {
+    margin-top: 80px;
+  }
+
+  #limlight .fasion ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 0;
+    list-style: none;
+  }
+
+  #limlight .fasion ul li {
+    width: 22.5%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #limlight .fasion ul li .first {
+    position: relative;
+  }
+
+  #limlight .fasion ul li .first .main-img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  #limlight .fasion ul li .icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: #f6f6f6;
+    padding: 10px;
+    border-radius: 50%;
+  }
+
+  #limlight .fasion ul li .icon img {
+    width: 20px;
+    height: 20px;
+    display: block;
+  }
+
+  #limlight .fasion .left {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #limlight .fasion .left h3 {
+    font-size: 16px;
+    font-weight: 600;
+    color: #3c4242;
+  }
+
+  #limlight .fasion .price {
+    font-weight: 700;
+    font-size: 14px;
+    color: #3c4242;
+    padding: 5px 12px;
+    background: #f6f6f6;
+    border-radius: 5px;
+  }
+
+  #limlight .fasion .right {
+    font-size: 14px;
+    font-weight: 500;
+    color: #807d7e;
+    margin-top: 5px;
+  }
+
+  @media (max-width: 1400px) {
+    #limlight .fasion ul li .first .main-img {
+      max-height: 370px;
+    }
+  }
+
+  /* Responsive Breakpoints */
+  @media (max-width: 1280px) {
+    #limlight .fasion ul li {
+      width: 30%;
+    }
+  }
+
+  @media (max-width: 980px) {
+
+
+    #limlight .title h6 {
+      font-size: 28px;
+    }
+
+    #limlight .fasion ul li .first .main-img {
+      max-height: 300px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    #limlight {
+      margin-top: 60px;
+    }
+
+    #limlight .fasion ul {
+      gap: 30px;
+    }
+
+    #limlight .fasion ul li {
+      width: 46%;
+    }
+
+    #limlight .title h6 {
+      font-size: 24px;
+    }
+  }
+
+  @media (max-width: 540px) {
+    #limlight .fasion .price {
+      font-size: 13px;
+      padding: 2px 6px;
+    }
+
+    #limlight .fasion .left h3 {
+      font-size: 13px;
+    }
+
+  }
+
+  @media (max-width: 480px) {
+    #limlight .fasion ul {
+      gap: 20px;
+    }
+
+    #limlight .fasion ul li {
+      width: 100%;
+    }
+
+    #limlight .title h6 {
+      font-size: 20px;
+    }
+
+    #limlight .fasion .left h3,
+    #limlight .fasion .right {
+      font-size: 14px;
+    }
+
+    #limlight .fasion .price {
+      font-size: 13px;
+      padding: 4px 10px;
+    }
+
+    #limlight .fasion ul li .icon {
+      padding: 8px;
+    }
+
+    #limlight .fasion ul li .icon img {
+      width: 18px;
+      height: 18px;
+    }
+  }
+</style>

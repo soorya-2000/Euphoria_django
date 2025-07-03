@@ -1,0 +1,272 @@
+{% extends 'shop/layouts/main.html' %}
+{% block title %}
+Euphoria | Home
+{% endblock title %}
+{% block content %}
+{% load static %}
+<section id="products">
+  <section class="wrapper">
+    <div>
+      <span class="title">
+        <img src="{% static 'images/Rectangle 21.svg' %}" alt="Rectangle">
+        <h6>{{ category_name}}</h6>
+      </span>
+      <ul>
+        {% for item in products %}
+        <li>
+          <div class="pro">
+            <a href="{% url 'product_details' category_name item.name %}">
+              <img class="mens_img" src="{{ item.image.url }}" alt="img-5">
+            </a>
+            <a href="{% url 'add_to_wishlist' item.id %}">
+              <span class="icon">
+                <img src="{% static 'images/wishlist.svg' %}" alt="wishlist">
+              </span>
+            </a>
+          </div>
+          <span>
+            <h3>{{ item.description }}</h3>
+            <a href="#"><img src="{% static 'images/arrow-right.svg' %}" alt=""></a>
+          </span>
+          <a href="{% url 'product_details' category_name item.name %}" class="explore">Explore Now!</a>
+
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section> <!-- #men_category.wrapper -->
+</section>
+
+<style>
+  #products {
+    position: relative;
+    margin-top: 2%;
+  }
+
+  #products .title img {}
+
+  #products .title h1 {}
+
+  #products div ul {
+    margin-top: 4%;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+  }
+
+  #products div ul li {
+    width: 22.5%;
+  }
+
+  #products div ul li .pro {
+    position: relative;
+  }
+
+  #products div ul li .icon {
+    position: absolute;
+    left: 70%;
+    top: -5%;
+    background-color: #f6f6f6;
+    padding: 10px;
+    border-radius: 50%;
+  }
+
+  #products div ul li:nth-child(5) {
+    margin-top: 4%;
+  }
+
+  #products div ul li:nth-child(6) {
+    margin-top: 4%;
+  }
+
+  #products div ul li:nth-child(7) {
+    margin-top: 4%;
+  }
+
+  #products div ul li:nth-child(8) {
+    margin-top: 4%;
+  }
+
+  #products div ul li .mens_img {
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+  }
+
+  #products div ul li span {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-top: 30px;
+  }
+
+  #products div ul li span h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #2a2f2f;
+  }
+
+  #products div ul li span a {
+    margin-top: 10px;
+    font-size: 13.41px;
+    color: #7f7f7f;
+  }
+
+  #products div ul li span a img {
+    width: 100%;
+  }
+
+  #products div ul li a.explore {
+    font-weight: 500;
+    font-size: 14px;
+    color: #7f7f7f;
+  }
+
+  @media all and (max-width: 1440px) {
+    #products div ul li .mens_img {
+      height: 350px;
+    }
+  }
+
+  @media all and (max-width: 1280px) {
+
+    #products .title h6 {
+      font-size: 30px;
+      margin-top: 0px;
+    }
+
+    #products div ul {
+      margin-top: 60px;
+    }
+  }
+
+  @media all and (max-width: 1080px) {
+
+    #products div ul li {
+      width: 22%;
+    }
+
+    #products div ul li span h3 {
+      font-size: 17px;
+      margin-bottom: 7px;
+    }
+
+    #products div ul li span a img {
+      display: none;
+    }
+
+    #products div ul li .mens_img {
+      height: 270px;
+    }
+  }
+
+  @media all and (max-width: 980px) {
+
+    #products div ul li span {
+      margin-top: 20px;
+    }
+
+    #products div ul li span h3 {
+      font-size: 15px;
+      margin-bottom: 1px;
+    }
+
+    #products div ul li a.explore {
+      font-size: 13px;
+    }
+
+    #products div ul li .mens_img {
+      height: 220px;
+    }
+  }
+
+  @media all and (max-width: 768px) {
+    #products .title h6 {
+      font-size: 25px;
+      margin-top: 0px;
+    }
+
+    #products div ul {
+      margin-top: 60px;
+    }
+
+    #products div ul li {
+      width: 46.5%;
+    }
+
+    #products div ul li:nth-child(3) {
+      margin-top: 50px;
+    }
+
+    #products div ul li:nth-child(4) {
+      margin-top: 50px;
+    }
+
+    #products div ul li:nth-child(5) {
+      margin-top: 50px;
+    }
+
+    #products div ul li:nth-child(6) {
+      margin-top: 50px;
+    }
+
+    #products div ul li:nth-child(7) {
+      margin-top: 50px;
+    }
+
+    #products div ul li:nth-child(8) {
+      margin-top: 50px;
+    }
+
+    #products div ul li span h3 {
+      font-size: 17px;
+    }
+
+    #products div ul li span a img {
+      display: block;
+    }
+
+    #products div ul li .mens_img {
+      height: 460px;
+    }
+  }
+
+  @media all and (max-width: 640px) {}
+
+  @media all and (max-width: 540px) {
+    #products div ul li .mens_img {
+      height: 330px;
+    }
+  }
+
+  @media all and (max-width: 480px) {
+
+    #products div ul {
+      margin-top: 40px;
+    }
+
+    #products div ul li span h3 {
+      font-size: 14px;
+    }
+
+    #products div ul li span a {
+      margin-top: 0px;
+
+    }
+
+    #products div ul li a.explore {
+      font-size: 12px;
+    }
+
+    #products div ul li span a img {
+      display: none;
+    }
+
+    #products div ul li .mens_img {
+      height: 220px;
+    }
+  }
+</style>
+
+{% endblock content %}

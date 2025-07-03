@@ -1,0 +1,710 @@
+{% load static %}
+<footer>
+  <section class="wrapper">
+    <div class="top">
+      <div class="about">
+        <h2>Need Help</h2>
+        <ul>
+          <li><a href="">Contact Us</a></li>
+          <li><a href="">Track Order</a></li>
+          <li><a href="">Returns & Refunds</a></li>
+          <li><a href="">FAQ's</a></li>
+          <li><a href=""> Career</a></li>
+        </ul>
+      </div>
+      <div class="about">
+        <h2>Company</h2>
+        <ul>
+          <li><a href="">About Us</a></li>
+          <li><a href="">euphoria Blog</a></li>
+          <li><a href="">euphoriastan</a></li>
+          <li><a href="">Collaboration</a></li>
+          <li><a href="">Media</a></li>
+        </ul>
+      </div>
+      <div class="about">
+        <h2>More Info</h2>
+        <ul>
+          <li><a href="">Term and Conditions</a></li>
+          <li><a href="">Privacy Policy</a></li>
+          <li><a href="">Shipping Policy</a></li>
+          <li><a href="">Sitemap</a></li>
+        </ul>
+      </div>
+      <div class="about">
+        <ul class="last">
+          <h2>Location</h2>
+          <li>
+            <h5>support@euphoria.in</h5>
+          </li>
+          <li>
+            <p>
+              Eklingpura Chouraha, Ahmedabad Main Road <br />
+              (NH 8- Near Mahadev Hotel) Udaipur, India- 313002
+            </p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="icon">
+      <div class="left">
+
+        <a href="/"><img src="{% static 'images/facebook.svg' %}" class="icon-facebook" alt="facebook"></a>
+        <a href="/" class="instagram"><img src="{% static 'images/instagram.svg' %}" class="icon-instagram"></img></a>
+        <a href="/" class="twitter"><img src="{% static 'images/twitter.svg' %}" class="icon-twitter"></img></a>
+        <a href="/" class="linkedin"><img src="{% static 'images/linkedin.svg' %}" class="icon-linkedin"></img></a>
+
+      </div>
+      <div class="right">
+        <h4>Download The App</h4>
+        <div class="store">
+          <span class="play">
+            <a href=""><img src="{% static 'images/playstore.svg' %}" alt="playstore" /></a>
+            <div class="google">
+              <p>android app on</p>
+              <h3>Google Play</h3>
+            </div>
+          </span>
+          <span class="mobile">
+            <a href=""><img src="{% static 'images/phone.svg' %}" alt="phone" /></a>
+            <div class="app">
+              <p>Available on the</p>
+              <h3>App Store</h3>
+            </div>
+          </span>
+        </div>
+      </div>
+    </div>
+    <hr class="new1">
+    <div class="popular_category ">
+      <a href="#footersecton">
+        <h2 style="color: azure;">Popular Categories</h2>
+      </a>
+      <img src="{% static 'images/Icon.svg' %}" id="toggleBtn" alt="icon-image" />
+    </div>
+    <div id="content">
+      <ul class="footer-list">
+        <li class="footer-lists"><a href="/">Term and Conditions</a></li>
+        <li class="footer-lists"><a href="/">Privacy Policy</a></li>
+        <li class="footer-lists"><a href="/">Shipping Policy</a></li>
+        <li class="footer-lists"><a href="/">Sitemap</a></li>
+      </ul>
+    </div>
+    <hr class="new1">
+    <div class="bottom">
+      <p> Copyright © 2023 Euphoria Folks Pvt Ltd. All rights reserved.</p>
+    </div>
+    <hr class="new">
+  </section>
+</footer>
+
+<style>
+  footer {
+    width: 100%;
+    margin-top: 80px;
+    background-color: #3c4242;
+  }
+
+  footer .top {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 5%;
+    padding-right: 5%;
+  }
+
+  footer .top .about {
+    padding-top: 3%;
+  }
+
+  footer .top .about h2 {
+    color: #f6f6f6;
+    font-weight: 700;
+    font-size: 29px;
+  }
+
+  footer .top .about ul li {
+    margin-top: 20px;
+  }
+
+  footer .top .about ul li a {
+    color: #f6f6f6;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+  }
+
+  footer .top .about h5 {
+    color: #fff;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 40px;
+  }
+
+  footer .top .about p {
+    color: #fff;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 40px;
+  }
+
+  footer .icon {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 5%;
+  }
+
+  footer .icon .left {
+    padding-top: 6%;
+    width: 22%;
+    padding-left: 5%;
+    display: flex;
+  }
+
+  footer .icon .left a {
+    margin-left: 10px;
+  }
+
+  footer .icon .left a span.icon-facebook {
+    background-color: #f6f6f6;
+    padding: 12px 8px;
+    border-radius: 28%;
+  }
+
+  footer .icon .left a span.icon-instagram {
+    background-color: #f6f6f6;
+    padding: 12px 8px;
+    border-radius: 28%;
+  }
+
+  footer .icon .left a span.icon-twitter {
+    background-color: #f6f6f6;
+    padding: 12px 8px;
+    border-radius: 28%;
+  }
+
+  footer .icon .left a span.icon-linkedin {
+    background-color: #f6f6f6;
+    padding: 12px 8px;
+    border-radius: 28%;
+  }
+  footer .icon .left a img{
+    background-color: white;
+    padding: 12px 11px;
+    border-radius: 8px 
+
+  }
+  footer .icon .left a img:hover {
+    background: #1877F2;
+
+  }
+  footer .icon .left .instagram img:hover {
+    background:linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+
+  }
+  footer .icon .left .twitter img:hover{
+    background: #1DA1F2;
+  }
+  footer .icon .left .twitter img:hover{
+    background: #0077B5;
+  }
+  
+
+  footer .icon .left a span.icon-instagram:hover {
+    color: #fff;
+    background: radial-gradient(circle at 33% 100%,
+        #fed373 4%,
+        #f15245 30%,
+        #d92e7f 62%,
+        #9b36b7 85%,
+        #515ecf);
+  }
+
+  footer .icon .left a span.icon-twitter:hover {
+    color: #fff;
+    background-color: #1da1f2;
+  }
+
+  footer .icon .left a span.icon-linkedin:hover {
+    background-color: #0e76a8;
+    color: #fff;
+  }
+
+  footer .icon .right {
+    padding-right: 5%;
+  }
+
+  footer .icon .right h4 {
+    color: #f6f6f6;
+    font-weight: 700;
+    font-size: 29px;
+  }
+
+  footer .icon .right .store {
+    display: flex;
+  }
+
+  footer .icon .right .store span.play {
+    display: flex;
+    margin-top: 30px;
+    background: #404040;
+    border-radius: 12px;
+    width: 150px;
+    height: 60px;
+    align-items: center;
+  }
+
+  footer .icon .right .store span.play a {
+    margin-right: 10px;
+  }
+
+  footer .icon .right .store span.play .google p {
+    padding-top: -20px;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 400;
+  }
+
+  footer .icon .right .store span.play .google h3 {
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 18px;
+  }
+
+  footer .icon .right .store span.mobile {
+    margin-left: 20px;
+    display: flex;
+    margin-top: 30px;
+    background: #404040;
+    border-radius: 12px;
+    width: 150px;
+    height: 60px;
+    align-items: center;
+  }
+
+  footer .icon .right .store span.mobile a {
+    margin-right: 15px;
+  }
+
+  footer .icon .right .store span.mobile .app p {
+    padding-top: -20px;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 400;
+  }
+
+  footer .icon .right .store span.mobile .app h3 {
+    color: #ffffff;
+    font-weight: 400;
+    font-size: 18px;
+  }
+
+  hr.new1 {
+    margin-top: 2%;
+    border-top: 1px dotted #bebcbd;
+    opacity: 40%;
+  }
+
+  .popular_category {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 48px;
+    padding-right: 48px;
+  }
+
+  .popular_category h2 {
+    font-size:
+      23px;
+    line-height: 61.99px;
+    font-weight: 700;
+    color: #F6F6F6;
+  }
+
+  .popular_category #toggleBtn {
+    cursor: pointer;
+    width: 30px;
+  }
+
+  #content {
+    margin-top: 20px;
+  }
+
+  .footer-list {
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+  }
+
+  .footer-lists {}
+
+  .footer-lists a {
+    font-size: 18px;
+    font-weight: 500;
+    color: #F6F6F6;
+  }
+
+  .footer-heading {
+    font-size: 29px;
+    font-weight: 700;
+    color: #F6F6F6;
+  }
+
+  #content {
+    padding-left: 5%;
+    display: none;
+  }
+
+  footer .bottom {
+    margin-top: 3%;
+  }
+
+  footer .bottom p {
+    font-weight: 700;
+    font-size: 18px;
+    text-align: center;
+    color: #fff;
+    padding-bottom: 50px;
+  }
+
+
+
+  @media all and (max-width: 1400px) {}
+
+  @media all and (max-width: 1280px) {
+
+    footer .top .about h2 {
+      font-size: 24px;
+    }
+
+    footer .top .about ul li a {
+      font-size: 16px;
+    }
+
+    footer .top .about p {
+      font-size: 16px;
+    }
+
+    footer .icon .right h4 {
+      font-size: 27px;
+    }
+
+    footer .popular .left h2 {
+      font-size: 27px;
+    }
+
+    footer .popular {
+      padding: 0px 70px;
+    }
+  }
+
+  @media all and (max-width: 1080px) {
+
+    footer .top .about h2 {
+      font-size: 22px;
+    }
+
+    footer .icon .right h4 {
+      font-size: 20px;
+    }
+
+    footer .popular .left h2 {
+      font-size: 21px;
+    }
+
+    footer .top .about ul li a {
+      font-size: 14px;
+    }
+
+    footer .popular .left h2 {
+      font-size: 24px;
+    }
+
+    footer .popular .right a img {
+      width: 25px;
+    }
+
+    footer .bottom p {
+      font-size: 16px;
+    }
+  }
+
+  @media all and (max-width: 980px) {
+
+    footer .top {
+      flex-wrap: wrap;
+    }
+
+    footer .top .about h2 {
+      font-size: 24px;
+    }
+
+    footer .top .about ul li a {
+      font-size: 16px;
+    }
+
+    footer .top .about ul.last {
+      padding-top: 4%;
+    }
+
+    footer .top .about h5 {
+      font-size: 17px;
+      line-height: 1;
+    }
+
+    footer .top .about p {
+      font-size: 15px;
+      line-height: 32px;
+      margin-top: -8px;
+    }
+
+    footer .popular .left h2 {
+      font-size: 20px;
+    }
+
+    footer .icon {
+      margin-top: 30px;
+    }
+
+    footer .icon .left {
+      width: 50%;
+    }
+
+    footer .icon .right h4 {
+      font-size: 24px;
+    }
+
+    footer .popular .right {
+      padding-top: 3px;
+      width: 3%;
+    }
+
+    footer .icon .right h4 {
+      font-size: 21px;
+    }
+
+    footer .icon .right .store {
+      margin-top: -15px;
+    }
+
+    footer .popular .left h2 {
+      font-size: 22px;
+    }
+
+    footer .bottom p {
+      font-size: 17px;
+    }
+  }
+
+  @media all and (max-width: 768px) {
+    footer .top .about h2 {
+      font-size: 22px;
+    }
+
+    footer .top .about ul.last {
+      padding-top: 40px;
+    }
+
+    footer .top .about ul li a {
+      font-size: 16px;
+    }
+
+    footer .icon .left {
+      width: 50%;
+      margin-right: 40px;
+    }
+
+    footer .popular .left h2 {
+      font-size: 20px;
+    }
+
+    footer .icon .right {
+      padding-right: 0;
+    }
+
+    footer .icon .right .store {
+      margin-top: -24px;
+    }
+
+    footer .icon .right h4 {
+      font-size: 20px;
+    }
+
+    footer .icon .right .store span.play .google p {
+      font-size: 11px;
+    }
+
+    footer .icon .right .store span.play .google h3 {
+      font-size: 17px;
+    }
+
+    footer .icon .right .store span.mobile .app h3 {
+      font-size: 17px;
+    }
+
+    footer .popular {
+      margin-bottom: 30px;
+    }
+
+    footer .popular .left h2 {
+      font-size: 18px;
+    }
+
+    footer .popular .right a img {
+      width: 23px;
+    }
+
+    footer .bottom p {
+      font-size: 14px;
+      padding-bottom: 20px;
+    }
+  }
+
+  @media all and (max-width: 640px) {
+
+    footer .top .about h2 {
+      font-size: 24px;
+    }
+
+    footer .top .about ul li a {
+      font-size: 15px;
+    }
+
+    footer .top .about h5 {
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    footer .top .about p {
+      font-size: 14px;
+      line-height: 1.7;
+      margin-top: -4px;
+    }
+
+    footer .popular .left h2 {
+      font-size: 17px;
+    }
+
+    footer .bottom p {
+      font-size: 14px;
+    }
+
+    footer .icon {
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    footer .icon .left {
+      width: 100%;
+    }
+
+    footer .icon .right {
+      padding-top: 50px;
+      padding-left: 30px;
+    }
+
+    footer .icon .right .store {
+      margin-top: -19px;
+    }
+
+    .footer-list {
+      gap: 20px;
+    }
+
+    .footer-lists a {
+      font-size: 16px;
+    }
+  }
+
+  @media all and (max-width: 540px) {
+    footer .top .about h2 {
+      font-size: 22px;
+    }
+
+    footer .top .about ul li a {
+      font-size: 14px;
+    }
+
+    footer .icon .right h4 {
+      font-size: 18px;
+    }
+
+    footer .icon .right .store span.play .google h3 {
+      font-size: 16px;
+    }
+
+    footer .icon .right .store span.mobile .app h3 {
+      font-size: 16px;
+    }
+
+    footer .popular .left h2 {
+      font-size: 16px;
+    }
+
+    footer .popular .right a img {
+      width: 22px;
+    }
+
+    .popular_category {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    .popular_category h2 {
+      font-size: 21px;
+    }
+
+    .popular_category #toggleBtn {
+      width: 24px;
+    }
+  }
+
+  @media all and (max-width: 480px) {
+    footer .top .about h2 {
+      font-size: 15px;
+    }
+
+    footer .top .about ul li {
+      margin-top: 10px;
+    }
+
+    footer .top .about ul li a {
+      font-size: 11px;
+    }
+
+    footer .top .about h5 {
+      font-size: 13px;
+    }
+
+    footer .top .about p {
+      font-size: 12px;
+    }
+  }
+
+  @media all and (max-width: 360px) {
+    footer .icon .right .store {
+      flex-wrap: wrap;
+    }
+
+    footer .icon .right .store span.mobile {
+      margin-left: 0px;
+      margin-top: 10px;
+    }
+
+    footer .popular {
+      padding: 0px 30px;
+    }
+
+    footer .popular .right a img {
+      width: 20px;
+    }
+
+    footer .popular .left h2 {
+      font-size: 16px;
+    }
+
+    footer .bottom p {
+      font-size: 12px;
+    }
+
+  }
+</style>

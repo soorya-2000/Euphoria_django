@@ -1,0 +1,180 @@
+{% load static %}
+<section id="brand">
+    <section class="wrapper">
+      <h2>Top Brands Deal</h2>
+      <p>Up To <span>60% </span>off on brands</p>
+      <div class="logo">
+        <ul>
+          <li><img src="{% static 'images/nike.svg' %}" alt="nike" /></li>
+          <li><img src="{% static 'images/H&M.svg' %}" alt="h&m" /></li>
+          <li><img src="{% static 'images/levis.svg' %}" alt="levis" /></li>
+          <li><img src="{% static 'images/USPA.svg' %}" alt="USPA" /></li>
+          <li><img src="{% static 'images/puma.svg' %}" alt="puma" /></li>
+        </ul>
+      </div>
+    </section> <!-- #brand.wrapper -->
+  </section> <!-- #brand -->
+
+  <style>
+
+#brand {
+  margin-top: 100px;
+}
+
+#brand .wrapper {
+  background-color: #3c4242;
+  border-radius: 12px;
+}
+
+#brand h2 {
+  padding-top: 50px;
+  text-align: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: 50px;
+}
+
+#brand p {
+  padding-top: 26px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 22px;
+  color: #fff;
+}
+
+#brand p span {
+  color: #fbd103;
+}
+
+#brand h1 {
+  padding-top: 40px;
+  text-align: center;
+  color: #fff;
+  font-weight: 800;
+  font-size: 50px;
+}
+
+#brand p {
+  margin-top: 20px;
+  text-align: center;
+  font-weight: 400;
+  font-size: 22px;
+  color: #fff;
+}
+
+#brand p span {
+  color: #fbd103;
+}
+
+#brand .logo {
+  padding-left: 10%;
+  padding-top: 5%;
+  padding-right: 8%;
+}
+
+#brand .logo ul {
+  display: flex;
+  justify-content: space-between;
+}
+
+#brand ul li {
+  width: 18%;
+}
+
+#brand .logo ul li img {
+  border: 1px solid #3c4242;
+  background-color: #fff;
+  width: 100%;
+  height: 60%;
+  margin-bottom: 10%;
+}
+
+#brand .logo img {
+  width: 150px;
+  height: 100px;
+  border-radius: 12px;
+  margin-bottom: 80px;
+}
+
+@media all and (max-width: 1400px) {}
+
+@media all and (max-width: 1280px) {
+ #brand h1 {
+    font-size: 37px;
+  }
+
+  #brand p {
+    font-size: 17px;
+  }
+}
+
+@media all and (max-width: 1080px) {
+
+  #brand p {
+    margin-top: 0px;
+  }
+
+  #brand .logo {
+    padding-left: 10%;
+    padding-top: 6%;
+    padding-right: 8%;
+    padding-bottom: 5%;
+  }
+
+  #brand .logo ul li img {
+    width: 100%;
+    height: 90%;
+    margin-bottom: 0;
+  }
+}
+
+@media all and (max-width: 980px) {
+ #brand h2 {
+    font-size: 40px;
+  }
+}
+
+@media all and (max-width: 768px) {
+  #brand {
+    margin-top: 70px;
+  }
+
+  #brand h2 {
+    font-size: 37px;
+    padding-top: 40px;
+  }
+
+  #brand p {
+    margin-top: 0px;
+    padding-top: 20px;
+  }
+
+  #brand .logo {
+    padding-left: 7%;
+    padding-top: 6%;
+    padding-right: 7%;
+    padding-bottom: 6%;
+  }
+}
+
+@media all and (max-width: 640px) {
+   #brand h2 {
+    font-size: 32px;
+  }
+
+  #brand p {
+    font-size: 14px;
+  }
+}
+
+@media all and (max-width: 540px) {
+   #brand h2 {
+    font-size: 30px;
+  }
+}
+
+@media all and (max-width: 480px) {
+}
+
+
+  </style>

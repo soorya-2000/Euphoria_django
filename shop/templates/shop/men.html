@@ -1,0 +1,249 @@
+{% load static %}
+<section id="mens_category">
+  <section class="wrapper">
+    <div>
+      <span class="title">
+        <img src="{% static 'images/Rectangle 21.svg' %}" alt="Rectangle">
+        <h6>Category For Men</h6>
+      </span>
+      <ul>
+        {% for item in men_categories %}
+        <li>
+          <div class="pro">
+            <a href="{% url 'men_store' %}">
+              <img class="mens_img" src="{{ item.image.url }}" alt="img-5">
+            </a>
+          </div>
+          <span>
+            <h3>{{ item.description }}</h3>
+            <a href="{% url 'men_store' %}"><img src="{% static 'images/arrow-right.svg' %}" alt=""></a>
+          </span>
+          <a href="{% url 'men_store'  %}" class="explore">Explore Now!
+
+          </a>
+
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section> <!-- #men_category.wrapper -->
+</section> <!-- #men_category -->
+
+<style>
+
+#mens_category {
+  position: relative;
+  margin-top: 4%;
+}
+
+#mens_category .title img {}
+
+#mens_category .title h1 {}
+
+#mens_category div ul {
+  margin-top: 4%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+#mens_category div ul li {
+  width: 22.5%;
+}
+
+#mens_category div ul li:nth-child(5) {
+  margin-top: 4%;
+}
+
+#mens_category div ul li:nth-child(6) {
+  margin-top: 4%;
+}
+
+#mens_category div ul li:nth-child(7) {
+  margin-top: 4%;
+}
+
+#mens_category div ul li:nth-child(8) {
+  margin-top: 4%;
+}
+
+#mens_category div ul li .mens_img {
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 500px;
+}
+
+#mens_category div ul li span {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  margin-top: 30px;
+}
+
+#mens_category div ul li span h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #2a2f2f;
+}
+
+#mens_category div ul li span a {
+  margin-top: 10px;
+  font-size: 13.41px;
+  color: #7f7f7f;
+}
+
+#mens_category div ul li span a img {
+  width: 100%;
+}
+
+#mens_category div ul li a.explore {
+  font-weight: 500;
+  font-size: 14px;
+  color: #7f7f7f;
+}
+
+@media all and (max-width: 1440px) {
+#mens_category div ul li .mens_img {
+    height: 350px;
+}
+}
+@media all and (max-width: 1280px) {
+
+  #mens_category {
+    margin-top: 100px;
+  }
+
+  #mens_category .title h6 {
+    font-size: 30px;
+    margin-top: 0px;
+  }
+
+  #mens_category div ul {
+    margin-top: 60px;
+  }
+}
+
+@media all and (max-width: 1080px) {
+
+  #mens_category div ul li {
+    width: 22%;
+  }
+
+  #mens_category div ul li span h3 {
+    font-size: 17px;
+    margin-bottom: 7px;
+  }
+     #mens_category div ul li .mens_img {
+        height: 270px;
+    }
+}
+
+@media all and (max-width: 980px) {
+
+  #mens_category div ul li span {
+    margin-top: 20px;
+  }
+
+  #mens_category div ul li span h3 {
+    font-size: 15px;
+    margin-bottom: 1px;
+  }
+
+  #mens_category div ul li a.explore {
+    font-size: 13px;
+  }
+      #mens_category div ul li .mens_img {
+        height: 220px;
+    }
+}
+
+@media all and (max-width: 768px) {
+
+  #mens_category .title h6 {
+    font-size: 25px;
+    margin-top: 0px;
+  }
+
+  #mens_category div ul {
+    margin-top: 60px;
+  }
+
+  #mens_category div ul li {
+    width: 46.5%;
+  }
+
+  #mens_category div ul li:nth-child(3) {
+    margin-top: 50px;
+  }
+
+  #mens_category div ul li:nth-child(4) {
+    margin-top: 50px;
+  }
+
+  #mens_category div ul li:nth-child(5) {
+    margin-top: 50px;
+  }
+
+  #mens_category div ul li:nth-child(6) {
+    margin-top: 50px;
+  }
+
+  #mens_category div ul li:nth-child(7) {
+    margin-top: 50px;
+  }
+
+  #mens_category div ul li:nth-child(8) {
+    margin-top: 50px;
+  }
+
+  #mens_category div ul li span h3 {
+    font-size: 17px;
+  }
+
+  #mens_category div ul li span a img {
+    display: block;
+  }
+      #mens_category div ul li .mens_img {
+        height: 460px;
+    }
+}
+
+@media all and (max-width: 640px) {
+}
+
+@media all and (max-width: 540px) {
+  #mens_category div ul li .mens_img {
+        height: 330px;
+    }
+
+}
+
+@media all and (max-width: 480px) {
+
+  #mens_category div ul {
+    margin-top: 40px;
+  }
+
+  #mens_category div ul li span h3 {
+    font-size: 14px;
+  }
+
+  #mens_category div ul li span a {
+    margin-top: 0px;
+
+  }
+
+  #mens_category div ul li a.explore {
+    font-size: 12px;
+  }
+
+  #mens_category div ul li span a img {
+    display: none;
+  }
+   #mens_category div ul li .mens_img {
+        height: 220px;
+    }
+}
+</style>

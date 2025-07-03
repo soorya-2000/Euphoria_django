@@ -1,0 +1,201 @@
+{% load static %}
+<section id="newarrival">
+  <section class="wrapper">
+    <span class="title">
+      <img src="{% static 'images/Rectangle 21.svg' %}" alt="Rectangle">
+      <h6>New Arrival</h6>
+    </span>
+    <div class="gallery-wrap">
+      <img src="{% static 'images/arrow-left.svg' %}" alt="" id="backBtn" />
+      <div class="gallery">
+        <div>
+          <span>
+            <img src="{% static 'images/img-1.jpg' %}" alt="" />
+            <h3>Kittend Joggers</h3>
+          </span>
+          <span>
+            <img src="{% static 'images/img-2.jpg' %}" alt="" />
+            <h3>Urban Shirts</h3>
+          </span>
+          <span>
+            <img src="{% static 'images/img-3.jpg' %}" alt="Full Sleeve" />
+            <h3>Full Sleeve</h3>
+          </span>
+          <span>
+            <img src="{% static 'images/img-4.jpg' %}" alt="Active T-Shirts" />
+            <h3>Active T-Shirts</h3>
+          </span>
+           <span>
+            <img src="{% static 'images/img-1.jpg' %}" alt="Kittend Joggers" />
+            <h3>Kittend Joggers</h3>
+          </span>
+          <span>
+            <img src="{% static 'images/img-2.jpg' %}" alt="Urban Shirts" />
+            <h3>Urban Shirts</h3>
+          </span>
+          <span>
+            <img src="{% static 'images/img-3.jpg' %}" alt="Full Sleeve" />
+            <h3>Full Sleeve</h3>
+          </span>
+          <span>
+            <img src="{% static 'images/img-4.jpg' %}" alt="Active T-Shirts" />
+            <h3>Active T-Shirts</h3>
+          </span>
+        </div>
+      </div>
+      <img src="{% static 'images/arrow-right.svg' %}" alt="" id="nextBtn" />
+    </div>
+  </section> <!-- #newarrival.wrapper -->
+</section> <!-- #newarrival -->
+
+<style>
+  #newarrival {
+    display: block;
+    position: relative;
+    margin-top: 100px;
+  }
+
+  #newarrival .title {}
+
+  #newarrival .title img {}
+
+  #newarrival .title h6 {}
+
+  .gallery {
+    display: flex;
+    overflow-x: scroll;
+  }
+
+  .gallery div {
+    grid-template-rows: auto auto auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    column-gap: 40px
+  }
+
+  .gallery div img {
+    width: 355px;
+  }
+
+  .gallery::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gallery-wrap {
+    display: flex;
+    padding-top: 50px;
+  }
+
+  #backBtn {
+    width: 25px;
+    cursor: pointer;
+    margin-right: 40px;
+  }
+
+  #nextBtn {
+    width: 25px;
+    cursor: pointer;
+    margin-left: 40px;
+  }
+
+  #newarrival .gallery div h3 {
+    padding-top: 6%;
+    font-weight: 700;
+    font-size: 20px;
+    color: #3c4242;
+  }
+
+  @media all and (max-width: 1280px) {
+    #newarrival .title img {
+      color: #8a33fd;
+      height: 27px;
+    }
+  }
+
+  @media all and (max-width: 980px) {
+    #newarrival div.details ul li:first-child {
+      margin-top: 10%;
+      width: 2%;
+
+    }
+
+    .gallery div img {
+      width: 220px;
+    }
+
+    #newarrival div.details ul li:last-child {
+      margin-top: 10%;
+      width: 2%;
+    }
+
+    #newarrival div.details ul li h1 {
+      font-size: 16px;
+    }
+  }
+
+  @media all and (max-width: 768px) {
+    #newarrival {
+      margin-top: 60px;
+    }
+
+    #newarrival .title img {
+      color: #8a33fd;
+      height: 25px;
+    }
+
+    #newarrival .title h6 {
+      font-size: 25px;
+      margin-top: 0px;
+    }
+
+    #newarrival div.details {
+      margin-top: 40px;
+    }
+
+    #newarrival div.details ul li {
+      width: 46.5%;
+    }
+
+    #newarrival div.details ul li h1 {
+      font-size: 18px;
+    }
+
+    #newarrival div.details ul li:first-child {
+      display: none;
+    }
+
+    #newarrival div.details ul li:last-child {
+      display: none;
+    }
+
+    #newarrival div.details ul li:nth-child(4) {
+      margin-top: 50px;
+    }
+
+    #newarrival div.details ul li:nth-child(5) {
+      margin-top: 50px;
+    }
+  }
+
+  @media all and (max-width: 640px) {}
+
+  @media all and (max-width: 540px) {
+
+    #newarrival .title img {
+      color: #8a33fd;
+      height: 24px;
+    }
+
+    #newarrival .title h6 {
+      font-size: 24px;
+    }
+
+    #newarrival div.details ul li h1 {
+      font-size: 17px;
+    }
+
+  }
+
+  @media all and (max-width: 480px) {}
+</style>

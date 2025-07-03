@@ -1,0 +1,264 @@
+{% extends 'shop/layouts/main.html' %}
+{% block title %}Your Cart{% endblock %}
+{% load static %}
+{% block content %}
+
+<section class="cart-section">
+  <div class="cart-container">
+    <h2>Your Shopping Cart</h2>
+
+    {% if cart_items %}
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for item in cart_items %}
+        <tr>
+          <td class="product-info">
+            <img src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+            <span>{{ item.product.name }}</span>
+          </td>
+          <td data-label="Price">₹{{ item.product.price }}</td>
+          <td data-label="Quantity">{{ item.product_qty }}</td>
+          <td data-label="Subtotal">₹{{ item.subtotal }}</td>
+
+
+          <td>
+            <form action="{% url 'remove_from_cart' item.id %}" method="POST">
+              {% csrf_token %}
+              <button type="submit" class="remove-btn">Remove</button>
+            </form>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="cart-total">
+      <h3>Total: ₹{{ cart_total }}</h3>
+
+    </div>
+    {% else %}
+    <p class="empty-message">Your cart is currently empty.</p>
+    {% endif %}
+
+  </div>
+</section>
+
+<style>
+  /* Cart Section Base */
+  .cart-section {
+    padding: 40px 20px;
+    background: #f9f9f9;
+  }
+
+  .cart-container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .cart-container h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  /* Cart Table */
+  .cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .cart-table th,
+  .cart-table td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+  }
+
+  .cart-table th {
+    background-color: #f2f2f2;
+    font-weight: 600;
+  }
+
+  /* Product Info Cell */
+  .product-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    text-align: left;
+  }
+
+  .product-info img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+
+  /* Buttons */
+  .remove-btn {
+    background: #ff4d4f;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .remove-btn:hover {
+    background: #d9363e;
+  }
+
+  /* Total */
+  .cart-total {
+    text-align: right;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  /* Empty Message */
+  .empty-message {
+    text-align: center;
+    font-size: 18px;
+    color: #888;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+
+    .cart-table th,
+    .cart-table td {
+      font-size: 14px;
+      padding: 10px;
+    }
+
+    .product-info img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+  @media (max-width: 580px) {
+
+    .cart-table,
+    .cart-table thead,
+    .cart-table tbody,
+    .cart-table th,
+    .cart-table td,
+    .cart-table tr {
+      display: block;
+    }
+
+    .cart-table thead {
+      display: none;
+    }
+
+    .cart-table tr {
+      margin-bottom: 20px;
+      background: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .cart-table td {
+      text-align: left;
+      padding: 8px 0;
+      border: none;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .cart-table td::before {
+      content: attr(data-label);
+      font-weight: 600;
+      color: #333;
+    }
+
+    .product-info {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .product-info span {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .remove-btn {
+      margin-top: 10px;
+    }
+
+    .cart-total {
+      text-align: center;
+    }
+  }
+
+  /* Tiny Devices */
+  @media (max-width: 360px) {
+    .product-info {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .product-info img {
+      margin-bottom: 8px;
+    }
+
+    .cart-total {
+      font-size: 18px;
+    }
+
+    .remove-btn {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  /* Small Devices: 360px & 320px */
+@media (max-width: 360px) {
+  .product-info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .product-info img {
+    width: 50px;
+    height: 50px;
+    margin-bottom: 6px;
+  }
+
+  .cart-table td {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cart-table td::before {
+    margin-bottom: 3px;
+    font-size: 13px;
+  }
+
+  .remove-btn {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .cart-total {
+    font-size: 18px;
+  }
+}
+</style>
+
+{% endblock %}

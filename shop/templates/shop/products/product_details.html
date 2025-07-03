@@ -1,0 +1,1221 @@
+{% extends 'shop/layouts/main.html' %}
+{% block title %}{{ product.name }} | Euphoria{% endblock %}
+{% block content %}
+{% load static %}
+<hr class="new3" />
+<section id="product-detail">
+    <section class="wrapper">
+        <div class="product-detail">
+            <div class="section-p1">
+                <div class="single-pro-image">
+                    <!-- Main Product Image -->
+                    <img src="{{ product.image.url }}" id="MainImg" alt="Main Product Image">
+
+                    <!-- Thumbnails and Arrows -->
+                    <div class="small-img-group">
+                        <!-- Scrollable Thumbnail Container -->
+                        <div class="thumbnail-wrapper" id="thumbnailWrapper">
+                            {% if similar_products %}
+                            {% for item in similar_products %}
+                            <div class="small-img-row {% if forloop.first %}active{% endif %}">
+                                <img src="{{ item.image.url }}" class="small-img" alt="Related Product">
+                            </div>
+                            {% endfor %}
+                            {% else %}
+                            <div class="small-img-row active">
+                                <img src="{{ product.image.url }}" class="small-img" alt="Product Image">
+                            </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Arrow Controls -->
+                        <div class="carousel-control-prev">
+                            <div class="btns" onclick="setActiveArrow(this); scrollThumbnails(-1)">
+                                <img class="back-btns" src="{% static 'images/carousel-control-prev.svg' %}"
+                                    alt="Up Arrow">
+                            </div>
+                            <div class="btns" onclick="setActiveArrow(this); scrollThumbnails(1)">
+                                <img class="forward-btns" src="{% static 'images/ChevronRight.svg' %}" alt="Down Arrow">
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                function setActiveArrow(clickedBtn) {
+                    document.querySelectorAll('.carousel-control-prev .btns').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    clickedBtn.classList.add('active');
+                }
+
+                function scrollThumbnails(direction) {
+                    const wrapper = document.getElementById('thumbnailWrapper');
+                    const scrollAmount = 80;
+                    wrapper.scrollBy({
+                        top: direction * scrollAmount,
+                        behavior: 'smooth'
+                    });
+                }
+
+                // Switch main image
+                const mainImg = document.getElementById('MainImg');
+                const thumbnails = document.querySelectorAll('.small-img');
+
+                thumbnails.forEach(thumbnail => {
+                    thumbnail.addEventListener('click', function () {
+                        // Swap main image src and clicked thumbnail src
+                        const tempSrc = mainImg.src;
+                        mainImg.src = this.src;
+                        this.src = tempSrc;
+                    });
+                });
+
+            </script>
+
+
+
+
+            <div class="single-pro-details">
+                <div class="shop">
+                    <h6> <a href="{% url 'home' %}">Shop <img src="{% static 'images/arrow-right.svg' %}" alt=""> </a>
+                    </h6>
+                    <h6>
+                        {% if product.category.gender == "men" %}
+                        <a href="{% url 'men_store' %}">
+                            {{ product.category.gender }}
+                            <img src="{% static 'images/arrow-right.svg' %}" alt="">
+                        </a>
+                        {% elif product.category.gender == "women" %}
+                        <a href="{% url 'women_store' %}">
+                            {{ product.category.gender }}
+                            <img src="{% static 'images/arrow-right.svg' %}" alt="">
+                        </a>
+                        {% endif %}
+                    </h6>
+                    <h6> {{ product}}</h6>
+                </div>
+                <h2>{{ product.description }}</h2>
+                <div class="rating">
+                    <div class="rating-1">
+                        <img src="{% static 'images/star2.svg' %}" alt="wishlist" class="star">
+                        <h6>3.5</h6>
+                    </div>
+                    <div class="rating-2">
+                        <img src="{% static 'images/message.svg' %}" alt="account">
+                        <h6>120 comment</h6>
+                    </div>
+                </div>
+
+                <div class="size">
+                    <div class="text-content">
+                        <h6>Select Size</h6>
+                        <small>Size Guide <img src="{% static 'images/arrow-right.svg' %}" alt=""> </small>
+                    </div>
+                    <div class="size-selection">
+                        <span class="active">XS</span>
+                        <span>S</span>
+                        <span>M</span>
+                        <span>L</span>
+                        <span>XL</span>
+                    </div>
+                </div>
+                <div class="color">
+                    <p class="size-container-dots-heading">Colours Available</p>
+                    <div class="size-container-dots">
+
+                        <div class="size-option-dots selectedd">
+                            <div class="size-option-dot1"></div>
+                        </div>
+                        <div class="size-option-dots">
+                            <div class="size-option-dot2"></div>
+                        </div>
+                        <div class="size-option-dots">
+                            <div class="size-option-dot3"></div>
+                        </div>
+                        <div class="size-option-dots ">
+                            <div class="size-option-dot4"></div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="button">
+                        <button>
+                            <a href="{% url 'add_to_cart' product.id %}" class="add-to-cart-btn">
+                                <img src="{% static 'images/cart-1.svg' %}" alt="car">Add To Cart</button>
+                        </a>
+                        <button class="buy-now">${{product.price}}</button>
+                    </div>
+                </div>
+                <ul class="pro-detil">
+                    <li>
+                        <div class="pro-img">
+                            <img src="{% static 'images/credit card.svg' %}" alt="" class="shop">
+                        </div>
+
+                        <p>Secure payment</p>
+                    </li>
+                    <li>
+                        <div class="pro-img">
+                            <img src="{% static 'images/Size&Fit.svg' %}" alt="" class="shop">
+                        </div>
+
+                        <p>Secure payment</p>
+                    </li>
+                    <li>
+                        <div class="pro-img">
+                            <img src="{% static 'images/truck.svg' %}" alt="" class="shop">
+                        </div>
+
+                        <p>Secure payment</p>
+                    </li>
+                    <li>
+                        <div class="pro-img">
+                            <img src="{% static 'images/Free Shipping & Returns.svg' %}" alt="" class="shop">
+                        </div>
+
+                        <p>Secure payment</p>
+                    </li>
+
+                </ul>
+            </div>
+    </section>
+</section>
+<section id="product-detail-page">
+    <section class="wrapper">
+        <div class="product-detail-page">
+            <div class="prodcut-description">
+                <span class="title">
+                    <img src="{% static 'images/Rectangle 21.svg' %}" alt="Rectangle">
+                    <h6>Product Description</h6>
+                </span>
+                <div class="description">
+                    <div class="descrip-reviwe">
+                        <h3>Description</h3>
+                        <p>User comments <span class="one">21</span></p>
+                        <p>Question & Answer <span class="two">4</span></p>
+                    </div>
+                    <p class="text-content">100% Bio-washed Cotton – makes the fabric extra soft & silky.
+                        Flexible ribbed crew neck. Precisely stitched with no pilling & no fading. Provide all-time
+                        comfort.
+                        Anytime, anywhere. Infinite range of matte-finish HD prints.</p>
+                </div>
+            </div>
+            <div class="product-table">
+                <ul>
+                    <li>
+                        <h3>Fabric</h3>
+                        <p>Bio-washed Cotton</p>
+                    </li>
+                    <li>
+                        <h3>Fabric</h3>
+                        <p>Bio-washed Cotton</p>
+                    </li>
+                    <li>
+                        <h3>Fabric</h3>
+                        <p>Bio-washed Cotton</p>
+                    </li>
+                    <li>
+                        <h3>Fabric</h3>
+                        <p>Bio-washed Cotton</p>
+                    </li>
+                    <li>
+                        <h3>Fabric</h3>
+                        <p>Bio-washed Cotton</p>
+                    </li>
+                    <li>
+                        <h3>Fabric</h3>
+                        <p>Bio-washed Cotton</p>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </section>
+</section>
+<section id="similar-product">
+    <section class="wrapper">
+        <span class="title">
+            <img src="{% static 'images/Rectangle 21.svg' %}" alt="Rectangle">
+            <h6>Similar Products</h6>
+        </span>
+        <div class="fasion">
+            <ul>
+                {% for item in similar_products %}
+                <li>
+                    <div class="first">
+                        <a href="{% url 'product_details' category_name item.name %}">
+                            <img class="main-img" src="{{ item.image.url }}" alt="{{ item.name }}">
+                        </a>
+                        <!-- ✅ Wishlist Button -->
+                        <a href="{% url 'add_to_wishlist' product.id %}">
+                            <span class="icon">
+                                <img src="{% static 'images/wishlist.svg' %}" alt="wishlist">
+                            </span>
+                        </a>
+
+                    </div>
+                    <span class="left">
+                        <h3>{{ item.name|truncatechars:22 }}</h3>
+                        <h6 class="price">${{ item.price }}</h6>
+                    </span>
+                    <a class="right">{{ item.brand }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+</section>
+
+
+
+
+<style>
+    /* sproduct detail */
+    hr.new3 {
+        border-top: 2px solid #bebcbd;
+
+    }
+
+    .product-detail {
+        display: flex;
+        position: relative;
+        gap: 20px;
+    }
+
+    .product-detail .section-p1 {}
+
+    .single-pro-image {
+        background: #F6F6F6;
+    }
+
+    .product-detail .single-pro-image #MainImg {
+        width: 520px;
+        height: 790px;
+        padding-left: 200px;
+    }
+
+    .product-detail .single-pro-image .small-img-group {
+        position: absolute;
+        top: 30%;
+        left: 5%;
+        background-color: #f6f6f6;
+
+    }
+
+    .product-detail .single-pro-image .small-img-row {
+        cursor: pointer;
+        border: 2px solid transparent;
+        border-radius: 8px;
+        overflow: hidden;
+
+    }
+
+    .product-detail .single-pro-image .small-img-row .small-img {
+        width: 70px;
+        height: 70px;
+        object-fit: cover;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: transform 0.3s;
+
+    }
+
+    .small-img:hover {
+        transform: scale(1.05);
+    }
+
+    .product-detail .single-pro-details {
+        padding: 30px 50px 50px 50px;
+    }
+
+    .product-detail .single-pro-details .shop {
+        display: flex;
+        gap: 30px;
+    }
+
+    .product-detail .single-pro-details .shop h6 {
+        font-size: 18px;
+        font-weight: 500;
+        color: #807d7e;
+        margin-bottom: 30px;
+    }
+
+    .product-detail .single-pro-details h2 {
+        font-size: 34px;
+        font-weight: 600;
+        color: #3c4242;
+        width: 59%;
+    }
+
+    .carousel-control-prev {
+        position: absolute;
+        top: 110%;
+        left: 30%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        background: transparent;
+    }
+
+
+
+    .btns {
+        background-color: white;
+        border-radius: 50%;
+        padding: 1px 4px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        border: 1px solid #ccc;
+    }
+
+    .btns.active {
+        background-color: black;
+    }
+
+    .back-btns,
+    .forward-btns {
+        width: 12px;
+        height: 12px;
+        transform: rotate(90deg);
+    }
+
+    .product-detail .single-pro-details .rating {
+        display: flex;
+        margin-top: 20px;
+        gap: 20px;
+    }
+
+    .product-detail .single-pro-details .rating .rating-1 {
+        display: flex;
+        gap: 10px;
+    }
+
+    .product-detail .single-pro-details .rating .rating-1 .star {
+        width: 150px;
+
+    }
+
+    .product-detail .single-pro-details .rating .rating-1 h6 {
+        font-size: 18px;
+        font-weight: 500;
+        color: #807d7e;
+        padding-top: 6px;
+        padding-left: 10px;
+    }
+
+    .product-detail .single-pro-details .rating .rating-2 {
+        display: flex;
+        margin-right: 30px;
+        width: 150px;
+    }
+
+    .product-detail .single-pro-details .rating .rating-2 .star {
+        width: 150px;
+
+    }
+
+    .product-detail .single-pro-details .rating .rating-2 h6 {
+        font-size: 18px;
+        font-weight: 500;
+        color: #807d7e;
+        padding-top: 6px;
+        padding-left: 10px;
+    }
+
+    .product-detail .single-pro-details .rating h6 img {}
+
+    .product-detail .single-pro-details .size {
+        margin-top: 30px;
+    }
+
+    .product-detail .single-pro-details .size .text-content {
+        display: flex;
+        gap: 30px;
+
+    }
+
+    .product-detail .single-pro-details .size .text-content h6 {
+        font-size: 18px;
+        font-weight: 600;
+        color: #3f4646;
+        padding-right: 20px;
+    }
+
+    .product-detail .single-pro-details .size .text-content small {
+        font-size: 18px;
+        font-weight: 500;
+        color: #807d7e;
+
+    }
+
+    .product-detail .single-pro-details .size .text-content small img {
+        width: 14px;
+        color: #807d7e;
+
+    }
+
+    .product-detail .single-pro-details .size-selection {
+        margin-top: 20px;
+
+    }
+
+    .product-detail .single-pro-details .size-selection span {
+        display: inline-block;
+        padding: 10px 15px 10px 14px;
+        border: 1px solid #7f7f7f;
+        width: 16px;
+        margin: 5px;
+        cursor: pointer;
+        border-radius: 4px;
+        user-select: none;
+        transition: background 0.3s;
+        border-radius: 12px;
+    }
+
+    .size-selection span:hover {
+        background-color: #f0f0f0;
+    }
+
+    .size-selection span.active {
+        background-color: black;
+        border-color: black;
+        color: #f0f0f0;
+    }
+
+    .product-detail .single-pro-details .color {
+        margin-top: 20px;
+        border-bottom: 1px solid;
+    }
+
+    .product-detail .single-pro-details .color .text-content h6 {
+        font-size: 18px;
+        font-weight: 600;
+        color: #3f4646;
+
+    }
+
+    .product-detail .single-pro-details .color .color-selection {
+        margin-top: 30px;
+    }
+
+    .size-option-dots {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 29px;
+        height: 29px;
+        /* border: 2px solid gray; */
+        border-radius: 50%;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .selectedd {
+        border: 2px solid black;
+    }
+
+    .size-option-dot1 {
+        background-color: #000;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+    }
+
+    .size-option-dot2 {
+        background-color: #EDD146;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+
+    }
+
+    .size-option-dot3 {
+        background-color: #EB84B0;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+
+    }
+
+    .size-option-dot4 {
+        background-color: #9C1F35;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+
+    }
+
+    .size-container-dots {
+        display: flex;
+        width: 163px;
+        justify-content: space-between;
+    }
+
+    .size-container-dots-heading {
+        font-size: 18px;
+        font-weight: 600;
+        color: #3F4646;
+        padding: 20px 0;
+    }
+
+    .product-detail .single-pro-details .color .color-selection .color {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        cursor: pointer;
+        border: 2px solid transparent;
+        box-sizing: border-box;
+        display: inline-block;
+        margin: 5px;
+        transition: border 0.2s, box-shadow 0.2s;
+
+    }
+
+    .color .active {
+        border: 2px solid #fff;
+        /* white inner border */
+        box-shadow: 0 0 0 2px black;
+        /* black outer ring */
+    }
+
+    .product-detail .single-pro-details .button {
+        align-items: center;
+        margin-top: 30px;
+    }
+
+    .product-detail .single-pro-details .button button a {
+        background: #8A33FD;
+        color: white;
+        padding: 14px 50px;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .product-detail .single-pro-details .button button img {
+        color: white;
+        margin-right: 20px;
+    }
+
+    .product-detail .single-pro-details .button button.buy-now {
+        background-color: white;
+        color: #3c4242;
+        padding: 12px 30px;
+        border-radius: 10px;
+        border: 1px solid #3c4242;
+        font-size: 18px;
+        font-weight: 700;
+        margin-left: 30px;
+        margin-bottom: 30px;
+    }
+
+    .product-detail .single-pro-details .pro-detil {
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .product-detail .single-pro-details .pro-detil li {
+        display: flex;
+        gap: 20px;
+        width: 46%;
+        align-items: center;
+    }
+
+    .product-detail .single-pro-details .pro-detil li .pro-img {
+        background-color: #f6f6f6;
+        border-radius: 50px;
+        padding: 14px;
+
+    }
+
+
+    .product-detail .single-pro-details .pro-detil li .pro-img img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .product-detail .single-pro-details .pro-detil li p {
+        font-size: 18px;
+        font-weight: 500;
+        color: #3c4242;
+    }
+
+    #product-detail-page {
+        margin-top: 100px;
+    }
+
+    .product-detail-page {
+        display: flex;
+        gap: 20px;
+    }
+
+    .product-detail-page .prodcut-description {}
+
+    .product-detail-page .prodcut-description .description {
+        margin-top: 30px;
+
+    }
+
+    .product-detail-page .prodcut-description .description .descrip-reviwe {
+        display: flex;
+        text-align: center;
+        gap: 60px;
+    }
+
+    .product-detail-page .prodcut-description .description .descrip-reviwe h3 {
+        font-weight: 500;
+        font-size: 18px;
+        color: #3c4242;
+    }
+
+    .product-detail-page .prodcut-description .description .descrip-reviwe p {
+        font-size: 18px;
+        font-weight: 400;
+        color: #807d7e;
+        line-height: normal;
+        display: flex;
+        gap: 20px;
+
+    }
+
+    .product-detail-page .prodcut-description .description .descrip-reviwe .one {
+        font-size: 14px;
+        font-weight: 500;
+        color: #fff;
+        background-color: #8A33FD;
+        padding: 3px;
+        border-radius: 5px;
+    }
+
+    .product-detail-page .prodcut-description .description .descrip-reviwe .two {
+        font-size: 14px;
+        font-weight: 500;
+        color: #fff;
+        background-color: #120425;
+        padding: 3px 8px;
+        border-radius: 5px;
+    }
+
+    .product-detail-page .prodcut-description .description .text-content {
+        padding-top: 40px;
+        font-size: 16px;
+        font-weight: 400;
+        color: #807d7e;
+    }
+
+    .product-detail-page .product-table {
+        width: 110%;
+    }
+
+    .product-detail-page .product-table ul {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: #FFF;
+    }
+
+    .product-detail-page .product-table ul li {
+        width: 30%;
+        border-bottom: 1px solid #bebcbd;
+        border-right: 1px solid #bebcbd;
+    }
+
+    .product-detail-page .product-table ul li:nth-child(3) {
+        border-right: 0;
+    }
+
+    .product-detail-page .product-table ul li:nth-child(4) {
+        border-bottom: none;
+    }
+
+    .product-detail-page .product-table ul li:nth-child(5) {
+        border-bottom: none;
+    }
+
+    .product-detail-page .product-table ul li:nth-child(6) {
+        border-bottom: none;
+        border-right: none;
+    }
+
+    .product-detail-page .product-table ul li h3 {
+        padding: 20px 0 0 40px;
+        font-size: 16px;
+        font-weight: 400;
+        color: #807d7e;
+    }
+
+    .product-detail-page .product-table ul li p {
+        padding: 5px 0 0 40px;
+        font-size: 16px;
+        font-weight: 500;
+        color: #3c4242;
+        margin-bottom: 30px;
+    }
+
+    #similar-product {
+        margin-top: 100px;
+        display: flex;
+    }
+
+    #similar-product .title img {}
+
+    #similar-product span h6 {
+        margin-top: 0;
+    }
+
+    #similar-product .fasion {
+        margin-top: 50px;
+    }
+
+    #similar-product .fasion ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 50px;
+    }
+
+    #similar-product .fasion ul li {
+        width: 22.5%;
+    }
+
+    #similar-product .fasion ul li .first {
+        position: relative;
+    }
+
+    #similar-product .fasion ul li .icon {
+        position: absolute;
+        left: 83%;
+        top: 6%;
+        background-color: #f6f6f6;
+        padding: 10px;
+        border-radius: 50%;
+    }
+
+    #similar-product .fasion ul li .first .main-img {
+        width: 100%;
+        height: 500px;
+    }
+
+    #similar-product .fasion ul li .first .icon img {
+        width: 100%;
+        display: block;
+    }
+
+    #similar-product .fasion .left {
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    #similar-product .fasion .left h3 {
+        font-weight: 600;
+        font-size: 16px;
+        color: #3c4242;
+    }
+
+    #similar-product .fasion .left .price {
+        font-weight: 700;
+        font-size: 14px;
+        color: #3c4242;
+        padding: 10px 20px;
+        border-radius: 5px;
+        background: #f6f6f6;
+
+    }
+
+    #similar-product .fasion ul li a.right {
+        font-weight: 500;
+        font-size: 14px;
+        color: #807d7e;
+    }
+
+    /* Large desktops (<=1440px) */
+    @media (max-width: 1440px) {
+        .product-detail .single-pro-image #MainImg {
+            padding-left: 100px;
+            width: 480px;
+            height: 720px;
+        }
+
+        .product-detail .single-pro-image .small-img-group {
+            left: 1%;
+        }
+
+        .product-detail .single-pro-details h2 {
+            width: 100%;
+            font-size: 32px;
+        }
+
+        .product-detail .single-pro-details .pro-detil {
+            gap: 20px;
+        }
+
+        .product-detail .single-pro-details .pro-detil li {
+            width: 46%;
+        }
+
+        .product-detail .single-pro-details .button {
+            margin-top: 15px;
+        }
+
+        .product-detail .single-pro-details .color .color-selection {
+            margin-top: 20px;
+        }
+
+        .product-detail .single-pro-details .pro-detil {
+            margin-top: 20px;
+        }
+
+        .product-detail .single-pro-details .pro-detil li .pro-img {
+            padding: 14px;
+        }
+
+        .product-detail .single-pro-details .button button a {
+            padding: 12px 38px;
+        }
+
+        .product-detail .single-pro-details .button button.buy-now {
+            padding: 10px 30px;
+        }
+
+        #similar-product .fasion ul li .first .main-img {
+            height: 360px;
+        }
+    }
+
+    /* Standard desktops (<=1280px) */
+    @media (max-width: 1280px) {
+        .product-detail .single-pro-image #MainImg {
+            width: 440px;
+            height: 660px;
+        }
+
+        .product-detail .single-pro-details {
+            padding: 20px 30px;
+        }
+
+        .product-detail .single-pro-details h2 {
+            font-size: 30px;
+            width: 100%;
+        }
+
+        .product-detail .single-pro-details .pro-detil li p {
+            font-size: 15px;
+        }
+
+        .product-detail .single-pro-details .button button a {
+            padding: 12px 38px;
+            font-size: 14px;
+        }
+
+        .product-detail .single-pro-details .button button.buy-now {
+            padding: 10px 30px;
+            font-size: 14px;
+        }
+
+        .product-detail-page {
+            flex-direction: column;
+            gap: 50px;
+
+        }
+
+        .product-detail-page .product-table {
+            width: 100%;
+        }
+
+        #similar-product .fasion .left .price {
+            padding: 10px 0px;
+        }
+
+        #similar-product .fasion ul li .first .main-img {
+            height: 290px;
+        }
+    }
+
+    /* Laptops (<=1080px) */
+    @media (max-width: 1080px) {
+        .product-detail .single-pro-image #MainImg {
+            width: 380px;
+            height: 620px;
+        }
+
+        .product-detail .single-pro-details .shop h6 {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .product-detail .single-pro-details h2 {
+            font-size: 27px;
+        }
+
+        .product-detail .single-pro-details {
+            padding: 20px 3px;
+        }
+
+        #similar-product .fasion ul {
+            gap: 30px;
+        }
+
+        #similar-product .fasion .left h3 {
+            font-size: 14px;
+        }
+
+        #similar-product .fasion ul li .first .main-img {
+            height: 260px;
+        }
+    }
+
+
+    /* Tablets (<=960px) */
+    @media (max-width: 960px) {
+        .product-detail {
+            gap: 40px;
+            flex-direction: column;
+        }
+
+        .product-detail .single-pro-image #MainImg {
+            height: 560px;
+            width: 420px;
+            padding-left: 120px;
+        }
+
+        .product-detail-page {
+            flex-direction: column;
+        }
+
+        .product-detail-page .prodcut-description .description .text-content {
+            width: 100%;
+            padding-right: 0;
+        }
+
+        .product-detail-page .product-table ul li {
+            width: 33%;
+        }
+
+        .product-detail .single-pro-image .small-img-group {
+            left: 3%;
+            top: 15%;
+
+        }
+
+        #similar-product .fasion ul li {
+            width: 46.5%;
+        }
+
+        #similar-product .fasion ul li .first .main-img {
+            height: 360px;
+        }
+    }
+
+    /* Small tablets (<=720px) */
+    @media (max-width: 720px) {}
+
+    /* Mobile landscape (<=640px) */
+    @media (max-width: 640px) {
+        .product-detail .single-pro-image #MainImg {
+            height: 500px;
+            width: 380px;
+            padding-left: 100px;
+
+        }
+
+        .product-detail-page .prodcut-description .description .descrip-reviwe {
+            gap: 30px;
+        }
+
+        .product-detail-page .prodcut-description .description .descrip-reviwe h3 {
+            font-weight: 500;
+            font-size: 16px;
+        }
+
+        .product-detail-page .prodcut-description .description .descrip-reviwe p {
+            font-size: 14px;
+        }
+
+        .product-detail-page .prodcut-description .description .text-content {
+            padding-top: 31px;
+            font-size: 14px;
+        }
+
+        .product-detail-page .product-table ul li p {
+            font-size: 14px;
+        }
+    }
+
+    /* Mobile portrait (<=520px) */
+    @media (max-width: 520px) {
+        .product-detail .single-pro-image #MainImg {
+            height: 500px;
+            width: 420px;
+            padding-left: 0px;
+            padding-bottom: 100px;
+
+        }
+
+        .product-detail .single-pro-image .small-img-group {
+            left: 3%;
+            top: 40%;
+            display: flex;
+            gap: 20px;
+        }
+
+        .product-detail-page .prodcut-description .description .descrip-reviwe {
+            gap: 20px;
+        }
+
+        #similar-product .fasion ul li .first .main-img {
+            height: 270px;
+        }
+    }
+
+    /* Small mobile (<=480px) */
+    @media (max-width: 480px) {
+        .product-detail .single-pro-image #MainImg {
+            height: 434px;
+            width: 316px;
+            padding-left: 0px;
+            padding-bottom: 80px;
+        }
+
+        .product-detail .single-pro-image .small-img-group {
+            left: 3%;
+            top: 34%;
+        }
+
+        .product-detail .single-pro-details .rating {
+            flex-wrap: wrap;
+        }
+
+        .product-detail .single-pro-details .button button a {
+            padding: 12px 26px;
+        }
+
+        .product-detail .single-pro-details .button button.buy-now {
+            margin-left: 6px;
+        }
+
+        .product-detail .single-pro-details .pro-detil {
+            flex-direction: column;
+        }
+
+        .product-detail .single-pro-details .pro-detil li {
+            width: 96%;
+        }
+
+        .product-detail-page .prodcut-description .description .descrip-reviwe {
+            gap: 20px;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .product-detail-page .product-table ul li {
+            width: 49%;
+        }
+
+        .product-detail-page .product-table ul li:nth-child(2) {
+            border-right: none;
+
+
+        }
+
+        .product-detail-page .product-table ul li:nth-child(4) {
+            border-right: none;
+
+
+        }
+
+        .product-detail-page .product-table ul li:nth-child(3) {
+            border-right: 1px solid #bebcbd;
+
+
+        }
+
+        .product-detail-page .product-table ul li:nth-child(6) {
+            border-top: 1px solid #bebcbd;
+
+
+        }
+
+        .product-detail-page .product-table ul li h3 {
+            padding-left: 10px;
+        }
+
+        .product-detail-page .product-table ul li p {
+            padding-left: 10px;
+        }
+
+        #similar-product .fasion ul li {
+            width: 100%;
+        }
+
+        #similar-product .fasion ul li .first .main-img {
+            height: 360px;
+
+        }
+    }
+
+    /* Extra small devices (<=360px) */
+    @media (max-width: 360px) {
+        .product-detail .single-pro-image .small-img-group {
+            left: 3%;
+            top: 32%;
+        }
+
+        .product-detail .single-pro-image #MainImg {
+            width: 300px;
+        }
+
+        .product-detail .single-pro-details .size-selection span {
+            padding: 8px 10px 9px 10px;
+            font-size: 14px;
+        }
+
+        .product-detail .single-pro-details .button button a {
+            padding: 12px 20px;
+        }
+    }
+</style>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const dotscolor = document.querySelectorAll(".size-option-dots");
+
+        dotscolor.forEach(option => {
+            option.addEventListener("click", function () {
+                // Remove the 'selected' class from all options
+                dotscolor.forEach(opt => opt.classList.remove("selectedd"));
+
+                // Add 'selected' class to the clicked option
+                this.classList.add("selectedd");
+            });
+        });
+    });
+    // Get all size spans
+    const sizeSpans = document.querySelectorAll('.size-selection span');
+
+    // Set the first one active on load
+    if (sizeSpans.length > 0) {
+        sizeSpans[0].classList.add('active');
+    }
+
+    // Add click event listeners
+    sizeSpans.forEach(span => {
+        span.addEventListener('click', () => {
+            sizeSpans.forEach(s => s.classList.remove('active')); // Remove from all
+            span.classList.add('active'); // Add to clicked
+            console.log('Selected size:', span.textContent); // Optional
+        });
+    });
+
+
+</script>
+{% endblock %}

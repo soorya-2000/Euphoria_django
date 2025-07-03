@@ -1,0 +1,249 @@
+{% load static %}
+<section id="spotlight">
+  <div class="slider">
+    <div class="slide" style="background-image: url({% static 'images/bg-1.jpg' %});"></div>
+    <div class="slide" style="background-image: url({% static 'images/bg-2.jpeg' %});"></div>
+    <!-- Add more slides here -->
+    <!-- Navigation buttons -->
+    <div class="navigation">
+      <img src="{% static 'images/carousel-control-prev.svg' %}" class="prev" alt="prev" />
+      <img src="{% static 'images/ChevronRight.svg' %}" class="next" alt="next" />
+    </div>
+    <!-- Dots -->
+    <div class="dots">
+      <span class="dot active" id="dot-left"></span>
+      <span class="dot" id="dot-right"></span>
+      <!-- Add more dots here -->
+    </div>
+  </div>
+  <section class="wrapper">
+    <div class="contents  ">
+      <h2 class="h2">T-Shirt / Tops</h2>
+      <h1>Summer <br />value pack</h1>
+      <p>cool / colorful / comfy</p>
+      <button><a href="">Shop Now</a></button>
+
+    </div>
+  </section>
+</section> <!-- #spotlight -->
+
+<style>
+  /* spotlight */
+.slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.slide {
+  width: 100%;
+  height: 768px;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  display: none;
+}
+
+.slide.active {
+  display: block;
+}
+
+.prev,
+.next {
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  position: absolute;
+  top: 40%;
+  padding: 10px;
+  z-index: 2;
+  border-radius: 50%;
+}
+
+.prev {
+  left: 20px;
+}
+
+.next {
+  right: 20px;
+}
+
+.dots {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 4px;
+}
+
+.dot {
+  width: 60px;
+  height: 10px;
+  background-color: #FFFFFF;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+#dot-left {
+  border-radius: 10px 0 0 10px;
+}
+
+#dot-right {
+  border-radius: 0 10px 10px 0;
+}
+
+.dot.active {
+  opacity: 1;
+}
+
+/* content */
+#spotlight {
+  width: 100%;
+  position: relative;
+}
+
+#spotlight .wrapper .contents {
+  position: absolute;
+  top: 150px;
+  left: 150px;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#spotlight .wrapper .contents h2 {
+  font-size: 32px;
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+#spotlight .wrapper .contents h1 {
+  font-size: 78px;
+  color: #fff;
+  font-weight: 800;
+  margin-bottom: 20px;
+}
+
+#spotlight .wrapper .contents p {
+  font-size: 32px;
+  color: #fff;
+  margin-bottom: 40px;
+  font-weight: 500;
+}
+
+#spotlight .wrapper .contents button {
+  background: #fff;
+  width: fit-content;
+  padding: 12px 24px;
+  border-radius: 5px;
+  border: 1px solid #fff;
+}
+
+#spotlight .wrapper .contents button a {
+  font-size: 24px;
+  font-weight: 700;
+  color: #3C4242;
+  text-decoration: none;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1080px) {
+
+}
+
+@media (max-width: 1024px) {
+  .slide {
+    height: 640px;
+  }
+
+  #spotlight .wrapper .contents {
+    top: 120px;
+    left: 80px;
+  }
+
+  #spotlight .wrapper .contents h1 {
+    font-size: 60px;
+  }
+
+  #spotlight .wrapper .contents h2 {
+    font-size: 26px;
+  }
+
+  #spotlight .wrapper .contents p {
+    font-size: 24px;
+  }
+
+  #spotlight .wrapper .contents button a {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .slide {
+    height: 540px;
+  }
+
+  #spotlight .wrapper .contents {
+    
+  }
+
+  #spotlight .wrapper .contents h1 {
+    font-size: 48px;
+  }
+
+  #spotlight .wrapper .contents h2 {
+    font-size: 22px;
+  }
+
+  #spotlight .wrapper .contents p {
+    font-size: 20px;
+  }
+
+  #spotlight .wrapper .contents button a {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slide {
+    height: 440px;
+  }
+
+  .prev, .next {
+    font-size: 16px;
+    padding: 8px;
+  }
+
+  .dot {
+    width: 40px;
+    height: 8px;
+  }
+
+  #spotlight .wrapper .contents {
+    
+  }
+
+  #spotlight .wrapper .contents h1 {
+    font-size: 36px;
+  }
+
+  #spotlight .wrapper .contents h2 {
+    font-size: 18px;
+  }
+
+  #spotlight .wrapper .contents p {
+    font-size: 16px;
+  }
+
+  #spotlight .wrapper .contents button {
+    padding: 10px 20px;
+  }
+
+  #spotlight .wrapper .contents button a {
+    font-size: 16px;
+  }
+}
+
+</style>

@@ -1,0 +1,76 @@
+{% extends 'shop/layouts/main.html' %}
+
+{% block content %}
+<section class="wrapper">
+  <h2 class="search-title">Search Results for "{{ query }}"</h2>
+  {% if results %}
+  <ul class="product-list">
+    {% for product in results %}
+    <li>
+      <a href="{% url 'product_details' product.category.name product.name %}">
+        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+        <p>{{ product.name }}</p>
+      </a>
+    </li>
+
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="no-results">No products found.</p>
+  {% endif %}
+</section>
+
+<style>
+  .search-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  /* Product grid styling */
+  .product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Individual product item */
+  .product-list li {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    background-color: #fff;
+    transition: transform 0.3s ease;
+  }
+
+  .product-list li:hover {
+    transform: translateY(-5px);
+  }
+
+  /* Image styling */
+  .product-list img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    /* ensures image fills the area without distortion */
+    border-radius: 4px;
+  }
+
+  /* Product name */
+  .product-list p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+  }
+
+  /* No results message */
+  .no-results {
+    color: #888;
+    font-style: italic;
+  }
+</style>
+
+{% endblock %}

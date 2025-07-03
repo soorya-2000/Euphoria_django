@@ -1,0 +1,171 @@
+{% load static %}
+<section id="poster">
+  <section class="wrapper">
+    <div class="bottom">
+      <div class="left"
+        style="background-image: url({% static 'images/bg-4.jpg' %}); background-size: cover; background-repeat: no-repeat;">
+        <div class="content">
+          <h1>WE MADE YOUR EVERYDAY <br> FASHION BETTER!</h1>
+          <p>In our journey to improve everyday fashion,</br>euphoria presents EVERYDAY wear range - <br> Comfortable
+            & Affordable fashion 24/7</p>
+          <a href="#" class="button">Shop Now</a>
+        </div>
+      </div>
+      <div class="right"
+        style="background-image: url({% static 'images/bg-5.jpg' %}); background-size: cover; background-repeat: no-repeat;">
+      
+      >
+
+      </div>
+    </div>
+  </section> <!-- #poster.wrapper -->
+</section> <!-- #poster -->
+
+<style>
+  #poster {
+    display: block;
+    margin-top: 5%;
+  }
+
+  #poster div.bottom {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  #poster div.bottom .content {
+    margin-top: 20%;
+    margin-left: 10%;
+  }
+
+  #poster div.bottom div.left {
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 50%;
+    height: 600px;
+    border-bottom-left-radius: 12px;
+  }
+
+  #poster div.bottom div.left h1 {
+    display: inline-block block;
+    color: #fff;
+    font-weight: 800;
+    font-size: 34px;
+    line-height: 50px;
+  }
+
+  #poster div.bottom div.left p {
+    display: block;
+    font-weight: 300;
+    font-size: 20px;
+    color: #fff;
+    padding-top: 4%;
+    padding-bottom: 10%;
+    line-height: 28px;
+  }
+
+  #poster div.bottom div.left a.button {
+    background-color: #fff;
+    padding: 12px 44px;
+    border: 1px solid #9b9b9b;
+    border-radius: 8px;
+  }
+
+  #poster div.bottom div.right {
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 50%;
+    height: 600px;
+    border-bottom-right-radius: 12px;
+  }
+
+  @media all and (max-width: 1280px) {
+     #poster {
+    margin-top: 100px;
+  }
+
+  #poster div.bottom div.left {
+    height: 500px;
+  }
+
+  #poster div.bottom div.right {
+    height: 500px;
+  }
+}
+
+@media all and (max-width: 1080px) {
+    #poster div.bottom div.left p {
+    padding-bottom: 16%;
+  }
+
+}
+@media all and (max-width: 980px) {
+   #poster div.bottom div.left {
+    width: 100%;
+    height: 550px;
+  }
+
+  #poster div.bottom div.right {
+    height: 370px;
+    display: none;
+  }
+}
+
+@media all and (max-width: 768px) {
+
+  #poster {
+    margin-top: 70px;
+  }
+
+  #poster div.bottom .content {
+    margin-top: 10%;
+    margin-left: 15%;
+  }
+
+  #poster div.bottom div.left h1 {
+    font-size: 22px;
+    line-height: 37px;
+    margin-bottom: 20px;
+  }
+
+  #poster div.bottom div.left {
+    height: 360px;
+  }
+
+  #poster div.bottom div.left p {
+    padding-top: 0;
+    font-size: 15px;
+    margin-bottom: -7%;
+  }
+
+  #poster div.bottom div.left a.button {
+    padding: 9px 27px;
+    font-size: 14px;
+  }
+}
+
+@media all and (max-width: 640px) {
+}
+@media all and (max-width: 540px) {
+}
+@media all and (max-width: 480px) {
+
+  #poster div.bottom div.left {
+    height: 300px;
+  }
+
+  #poster div.bottom div.left h1 {
+    font-size: 17px;
+  }
+
+  #poster div.bottom div.left p {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  #poster div.bottom div.left a.button {
+    font-size: 13px;
+    padding: 9px 21px;
+  }
+}
+
+</style>

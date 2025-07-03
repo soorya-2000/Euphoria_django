@@ -1,0 +1,221 @@
+{% load static %}
+<section id="women_category">
+  <section class="wrapper">
+    <span class="title">
+      <img src="{% static 'images/Rectangle 21.svg' %}" alt="Rectangle">
+      <h6>Category For Women</h6>
+    </span>
+    <ul>
+      {% for item in women_categories %}
+      <li>
+        <div class="pro">
+          <a href="{% url 'women_store'%}">
+            <img class="womens_img" src="{{ item.image.url }}" alt="img-5">
+          </a>
+        </div>
+        <span>
+          <h3>{{ item.description }}</h3>
+          <a href="{% url 'women_store'%}"><img src="{% static 'images/arrow-right.svg' %}" alt=""></a>
+        </span>
+        <a href="{% url 'women_store' %}" class="explore">Explore Now!
+
+        </a>
+
+      </li>
+      {% endfor %}
+    </ul>
+  </section> <!-- #women_category.wrapper -->
+</section> <!-- #women_category -->
+
+<style>
+  #women_category {
+    margin-top:  4%;
+  }
+
+  #women_category .title img {}
+
+  #women_category span h6 {}
+
+  #women_category ul {
+    margin-top: 70px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  #women_category ul li {
+    width: 22.5%;
+  }
+
+  #women_category ul li .womens_img {
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+  }
+
+  #women_category ul li:nth-child(4) {
+    margin-right: 0;
+  }
+
+  #women_category ul li span {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-top: 30px;
+  }
+
+  #women_category ul li span h3 {
+    font-size: 17px;
+    font-weight: 700;
+    color: #2a2f2f;
+  }
+
+  #women_category ul li span a img {
+    width: 18px;
+  }
+
+  #women_category ul li span a.arrow-right {
+    margin-top: 10px;
+  }
+
+  #women_category ul li a.explore {
+    margin-top: 10px;
+    font-size: 13.41px;
+    font-weight: 500;
+    color: #7f7f7f;
+  }
+
+  @media all and (max-width: 1400px) {
+    #women_category ul li .womens_img {
+      height: 350px;
+    }
+  }
+
+  @media all and (max-width: 1280px) {
+    #women_category span h6 {
+      font-size: 27px;
+      margin-top: 0;
+    }
+
+
+    #women_category ul {
+      margin-top: 70px;
+    }
+
+  }
+
+  @media all and (max-width: 1080px) {
+    #women_category ul li {
+      width: 22%;
+    }
+
+    #women_category ul li span a img {
+      display: none;
+    }
+
+    #women_category ul li span h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
+
+    #women_category ul li .womens_img {
+      height: 270px;
+    }
+  }
+
+  @media all and (max-width: 980px) {
+
+    #women_category ul li span {
+      margin-top: 20px;
+    }
+
+    #women_category ul li span h3 {
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    #women_category ul li .womens_img {
+      height: 220px;
+    }
+  }
+
+  @media all and (max-width: 768px) {
+    #women_category span h6 {
+      font-size: 25px;
+      margin-top: 0;
+    }
+
+    #women_category ul {
+      margin-top: 60px;
+    }
+
+    #women_category ul li {
+      width: 46.5%;
+    }
+
+    #women_category ul li span h3 {
+      font-size: 17px;
+    }
+
+    #women_category ul li span a {
+      margin-top: 6%;
+      width: 5.5%;
+    }
+
+    #women_category ul li span a img {
+      display: block;
+    }
+
+    #women_category ul li a.explore {
+      font-size: 14px;
+    }
+
+    #women_category ul li:nth-child(3) {
+      margin-top: 50px;
+    }
+
+    #women_category ul li:nth-child(4) {
+      margin-top: 50px;
+    }
+
+    #women_category ul li .womens_img {
+      height: 460px;
+    }
+  }
+
+  @media all and (max-width: 640px) {}
+
+  @media all and (max-width: 540px) {
+    #women_category ul li .womens_img {
+      height: 330px;
+    }
+  }
+
+  @media all and (max-width: 480px) {
+
+    #women_category {
+      margin-top: 50px;
+    }
+
+    #women_category ul {
+      margin-top: 50px;
+    }
+
+    #women_category ul li span h3 {
+      font-size: 13px;
+    }
+
+    #women_category ul li span a img {
+      display: none;
+    }
+
+    #women_category ul li a.explore {
+      font-size: 12px;
+    }
+
+    #women_category ul li .womens_img {
+      height: 220px;
+    }
+  }
+</style>
