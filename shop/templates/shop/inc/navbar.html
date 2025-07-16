@@ -3,8 +3,23 @@
   <h1 class="left">
     <a href="{% url 'home' %}"><img src="{% static 'images/Logo.svg' %}" alt="logo" /></a>
   </h1>
+  {% load static %}
+
+  <!-- Menu Icons -->
+  <div class="icons">
+    <div class="details">
+      <div id="hover">
+        <h1>
+          <img id="menu-icon" class="menu" src="{% static 'images/menu.svg' %}" alt="menu icon">
+        </h1>
+      </div>
+      <h2 id="close-icon" style="display: none;">×</h2>
+    </div>
+  </div>
+
+  <!-- Navigation Menu -->
   <nav id="nav-menu" class="middle hidden">
-    <ul class="middle hidden">
+    <ul class="middle">
       <li><a href="{% url 'home' %}" class="nav-link">Shop</a></li>
       <li><a href="{% url 'men_store' %}" class="nav-link">Men</a></li>
       <li><a href="{% url 'women_store' %}" class="nav-link">Women</a></li>
@@ -12,19 +27,7 @@
       <li><a href="#" class="nav-link">Joggers</a></li>
     </ul>
   </nav>
-  
 
-  <div class="icons">
-    <div class="details">
-      <div id="hover">
-        
-        <h1>
-          <img id="menu-icon" class="menu" src="{% static 'images/menu.svg' %}" alt="menu_image">
-        </h1>
-      </div>
-      <h2 id="close-icon" style="display: none;">x</h2>
-    </div>
-  </div>
 
   <script>
     const menuIcon = document.getElementById('menu-icon');
@@ -33,33 +36,16 @@
 
     menuIcon.addEventListener('click', () => {
       navMenu.classList.remove('hidden');
-      navMenu.classList.add('show');
-      closeIcon.style.display = 'block';
       menuIcon.style.display = 'none';
+      closeIcon.style.display = 'block';
     });
 
     closeIcon.addEventListener('click', () => {
-      navMenu.classList.remove('show');
       navMenu.classList.add('hidden');
-      closeIcon.style.display = 'none';
       menuIcon.style.display = 'block';
+      closeIcon.style.display = 'none';
     });
   </script>
- 
-<style>
-  @media (min-width: 1081px) {
-  #nav-menu {
-    display: block !important;
-    position: static;
-  }
-
-  #hamburger-icon,
-  #close-icon {
-    display: none !important;
-  }
-}
-</style>
-
   <form action="{% url 'search' %}" method="GET" class="search-form">
     <input type="text" name="q" placeholder="Search" />
     <button type="submit">
@@ -102,8 +88,6 @@
 
   </span>
 </header>
-
-
 
 
 <style>
@@ -151,6 +135,9 @@
     color: #807d7e;
     font-weight: 700;
   }
+
+
+
 
 
   /* ---------------- */
@@ -364,7 +351,31 @@
       margin-left: 50px;
     }
 
-    nav.middle {
+    header nav.middle {
+      width: 0;
+      margin: 0;
+    }
+
+    #nav-menu .middle {
+      position: relative;
+      top: 177px;
+      left: -250px;
+      background-color: #fff;
+      border: 0;
+      flex-direction: column;
+      gap: 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 30px;
+      padding-left: 60px;
+      width: 304px;
+      z-index: 10;
+    }
+
+    .search-form {
+      margin-right: 80px;
+    }
+
+    .hidden {
       display: none;
     }
 
@@ -393,15 +404,13 @@
     }
   }
 
-  @media all and (max-width: 980px) {}
-
-  @media all and (max-width: 768px) {
-    nav.middle {
-      display: none;
+  @media all and (max-width: 980px) {
+    #nav-menu .middle {
+      left: -180px;
     }
-
-
   }
+
+  @media all and (max-width: 768px) {}
 
   @media all and (max-width: 640px) {
     header .icons .details #hover h1 img {
@@ -423,6 +432,12 @@
       width: 25px;
       height: 25px;
       font-size: 14px;
+    }
+
+  
+
+    .search-form {
+      margin-right: 20px;
     }
   }
 
